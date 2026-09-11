@@ -1,0 +1,10 @@
+# 本地运行数据 / 大文件，不入库
+edge-vpn-profile/
+chrome-vpn-profile/
+*.apk
+*.log
+*.png
+*.xml
+nul
+thumbs.db
+.DS_Store
