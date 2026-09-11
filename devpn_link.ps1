@@ -47,10 +47,24 @@ if (-not $dev) { "adb device still not ready after 120s"; exit 1 }
 "== 2. ensure DeVPN tunnel (tun0) =="
 $tun = (& $adb shell /system/bin/ip addr show) -match "tun0"
 if (-not $tun) {
-  & $adb shell am start -n com.desafa.devpn/.MainActivity | Out-Null
-  Start-Sleep -Seconds 3
-  & $adb shell input tap 1095 1064 | Out-Null
-  for ($i=0; $i -lt 10; $i++) {
+  $lnk = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\DeVPN.lnk"
+  if (Test-Path $lnk) { Start-Process $lnk | Out-Null } else { & $adb shell am start -n com.desafa.devpn/.MainActivity | Out-Null }
+  Start-Sleep -Seconds 5
+  & $adb shell rm -f /sdcard/qc.xml 2>&1 | Out-Null
+  for ($i = 0; $i -lt 6; $i++) {
+    & $adb shell "uiautomator dump /sdcard/qc.xml" 2>&1 | Out-Null
+    cmd /c "$adb exec-out cat /sdcard/qc.xml > $env:TEMP\qc.xml" 2>&1 | Out-Null
+    $uix = Get-Content -LiteralPath "$env:TEMP\qc.xml" -Raw -ErrorAction SilentlyContinue
+    $m = [regex]::Match($uix, 'content-desc="Quick connect"[^>]*bounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"')
+    if ($m.Success) {
+      $cx = [int](([int]$m.Groups[1].Value + [int]$m.Groups[3].Value) / 2)
+      $cy = [int](([int]$m.Groups[2].Value + [int]$m.Groups[4].Value) / 2)
+      & $adb shell input tap $cx $cy | Out-Null
+      break
+    }
+    Start-Sleep -Seconds 4
+  }
+  for ($i = 0; $i -lt 12; $i++) {
     Start-Sleep -Seconds 3
     $tun = (& $adb shell /system/bin/ip addr show) -match "tun0"
     if ($tun) { break }
