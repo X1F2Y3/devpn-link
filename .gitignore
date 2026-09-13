@@ -1,10 +1,42 @@
-# 本地运行数据 / 大文件，不入库
+# Build artifacts
+*.exe
+*.dll
+*.pdb
+*.log
+
+# Temp files
+*.tmp
+*.temp
+*.bak
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Edge browser profile (not part of this project)
 edge-vpn-profile/
 chrome-vpn-profile/
+
+# IDE
+.vs/
+.idea/
+*.sln
+*.suo
+
+# Compiled output
+bin/
+obj/
+
+# Large binaries & Android Images (prevents GitHub 100MB rejection)
 *.apk
-*.log
-*.png
-*.xml
-nul
-thumbs.db
-.DS_Store
+*.msixbundle
+*.7z
+*.zip
+*.vhdx
+*.img
+kernel
+WSA_*/
+*extracted*/
+
+# Local config & state
+*.local.json
