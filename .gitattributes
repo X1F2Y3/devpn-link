@@ -1,0 +1,16 @@
+# 所有文本文件默认 LF
+* text=auto eol=lf
+
+*.md   text eol=lf
+*.json text eol=lf
+*.yml  text eol=lf
+
+*.bat  text eol=crlf
+*.cmd  text eol=crlf
+
+*.png  binary
+*.jpg  binary
+*.exe  binary
+
+# 文档仓库：Markdown 不计入代码占比
+*.md   linguist-documentation

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 先读方案文档
+    url: https://github.com/X1F2Y3/devpn-link#readme
+    about: README 是问题陈述与核心发现；SOLUTION.md 是完整技术规范
+  - name: 安全 / 合规问题
+    url: https://github.com/X1F2Y3/devpn-link/security/advisories/new
+    about: 请走私密通道，不要开公开 issue

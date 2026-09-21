@@ -2,7 +2,10 @@
 
 > **DeVPN PC 端原生化重构方案** —— 彻底淘汰 WSA / 安卓虚拟机套娃架构，以原生 Windows 方式运行 DeVPN 代理服务。
 
-![LICENSE](https://img.shields.io/github/license/X1F2Y3/devpn-link?style=flat-square) ![platform](https://img.shields.io/badge/platform-Windows%2010%2F11-blue?style=flat-square)
+![LICENSE](https://img.shields.io/github/license/X1F2Y3/devpn-link?style=flat-square) ![platform](https://img.shields.io/badge/platform-Windows%2010%2F11-blue?style=flat-square) ![status](https://img.shields.io/badge/status-RFC%20·%20方案阶段-orange?style=flat-square) ![code](https://img.shields.io/badge/实现代码-待提交-lightgrey?style=flat-square)
+
+> 📄 **本仓库是 RFC（技术提案）**，内容是方案与论证，**暂不含实现代码**。
+> 目标架构与验收指标已定义完毕（见下文），欢迎按 `CONTRIBUTING.md` 提交实现。
 
 ---
 
